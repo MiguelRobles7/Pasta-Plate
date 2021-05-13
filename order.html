@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" href="https://media.discordapp.net/attachments/621589785823281152/808361007465627699/logo.png" type="image/x-icon">
+<title>Pasta Plate - Order Confirmation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+.menu {display: none}
+
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("images/pastaBg.jpg");
+  min-height: 90%;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  border-collapse: collapse;
+  padding: 5px;
+  font-size: 60px;
+}
+.center {
+  margin: auto;
+  width: 85%;
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
+<body>
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content" style="text-align: center;">
+    <h1 style="font-size:80px"><b>Ordered Successfully!</b></h1>
+    <h2 style="font-size:60px"><i> Expect a message confirming your order! Not replying will cancel your order.</i> </h2>
+    <a class="w3-button w3-black w3-block center" style="margin-top: 5px; font-size:40px; width:80%" href="index.html"> Back to Menu </a>
+  </div>
+</div>
+<header class="w3-center w3-black w3-padding-48 w3-xxlarge" style="height: 25%;">
+  <div style="margin-top: -15px;">
+    <img style="width:5%;" src="images/logo.png">
+    <h1> Pasta Plate <h1/>
+  </div>
+</header>
+<div class="bgimg w3-display-container w3-grayscale-min" id="contact">
+  <div class="w3-content w3-padding-32 w3-white" style="padding-left:64px;padding-right:64px;">
+      <a style="font-size:80px" > <u> <b> Your contact details:  </b> </u> </a>
+      <div id="results" class="center"> </div>
+    <a style="font-size:80px" > <u> <b> Order Summary: </b> </u> </a>
+
+    <table id="orders" style="width: 100%; margin-left: auto; margin-right: auto;">
+      <tr>
+        <th> Orders </th>
+        <th> Quantity </th>
+        <th> Total </th>
+      </tr>
+    </table>
+  <button id="myBtn" class="w3-button w3-black w3-block" style="margin-top: 20px; font-size:40px">Confirm Order!</button>  
+</div>
+<footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+  <p>Contact us <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="w3-hover-text-green">here!</a></p>
+  <ul class="social-icons">
+    <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+    <li><a class="twitter" href="#"><i class="fas fa-twitter"></i></a></li>
+    <li><a class="dribbble" href="#"><i class="fas fa-dribbble"></i></a></li>
+    <li><a class="linkedin" href="#"><i class="fas fa-linkedin"></i></a></li>   
+  </ul>
+</footer>
+</body>
+<script>
+  const list = document.getElementById("results")
+  const orders = document.getElementById("orders")
+  var totalQty = 0;
+  var totalVal = 0;
+  new URLSearchParams(window.location.search).forEach((value, name) => 
+  {
+    if(name == "Name" || name == "Contact" || name == "Short Message") 
+    {
+      var h = document.createElement("H1");
+      h.style.cssText = "font-size: 60px";
+      var t = document.createTextNode(`${name}: ${value}`);
+      h.appendChild(t);
+      list.appendChild(h);
+    }
+    else if(value.length > 0)
+    {
+      if(name == "Linguine al Prosciutto e Tartufo") 
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*395 + ".00</td></tr>";
+        totalVal += value * 395;
+      }
+      if(name == "Spaghetti alla Carbonara") 
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*340 + ".00</td></tr>";
+        totalVal += value*340;
+      }
+      if(name == "Seafood Diablo")
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*430 + ".00</td></tr>";
+        totalVal += value*430;
+      } 
+      if(name == "Spaghetti Aglio Olio") 
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*230 + ".00</td></tr>";
+        totalVal += value*230;
+      }
+      if(name == "Spaghetti ai Tesori del Mare") 
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*455 + ".00</td></tr>";
+        totalVal += value*455;
+      }
+      if(name == "Creamy Pesto & Prosciutto")
+      {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*410 + ".00</td></tr>";
+        totalVal += value*410;
+      }
+      if(name == "Herb Onion Focaccia") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*395 + ".00</td></tr>";
+        totalVal += value*395;
+      }
+      if(name == "French Butter Croissant") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*143 + ".00</td></tr>";
+        totalVal += value*143;
+      }
+      if(name == "Sourdough Bread") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*140 + ".00</td></tr>";
+        totalVal += value*140;
+      }
+      if(name == "Ciabatta Bread") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*140 + ".00</td></tr>";
+        totalVal += value*140;
+      }
+      if(name == "Pepsi") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*53 + ".00</td></tr>";
+        totalVal += value*53;
+      }
+      if(name == "Mug's Rootbeer") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*56 + ".00</td></tr>";
+        totalVal += value*56;
+      }
+      if(name == "Mountain Dew") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*53 + ".00</td></tr>";
+        totalVal += value*53;
+      }
+      if(name == "Pepsi Max") {
+        orders.innerHTML += "<tr><td>" + name + "</td><td>" + value + "</td><td>₱" + value*58 + ".00</td></tr>";
+        totalVal += value*58;
+      }
+    }
+  })
+  
+  orders.innerHTML += "<tr><td>"  + "Total" + "</td><td>" + " " + "</td><td>₱" + totalVal + ".00</td></tr>";
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</html>

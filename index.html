@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <link
+    rel="icon"
+    href="https://media.discordapp.net/attachments/621589785823281152/808361007465627699/logo.png"
+    type="image/x-icon"
+  />
+  <title>Pasta Plate</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body,
+    html {
+      height: 100%;
+    }
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Amatic SC", sans-serif;
+    }
+    .menu {
+      display: none;
+    }
+
+    .bgimg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("images/pastaBg.jpg");
+      min-height: 90%;
+    }
+    .social-icons {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
+    .social-icons li {
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .social-icons li.title {
+      margin-right: 15px;
+      text-transform: uppercase;
+      color: #96a2b2;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .social-icons a {
+      background-color: #eceeef;
+      color: #818a91;
+      font-size: 16px;
+      display: inline-block;
+      line-height: 44px;
+      width: 44px;
+      height: 44px;
+      text-align: center;
+      margin-right: 8px;
+      border-radius: 100%;
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+    }
+    .social-icons a:active,
+    .social-icons a:focus,
+    .social-icons a:hover {
+      color: #fff;
+      background-color: #29aafe;
+    }
+    .social-icons.size-sm a {
+      line-height: 34px;
+      height: 34px;
+      width: 34px;
+      font-size: 14px;
+    }
+    .social-icons a.facebook:hover {
+      background-color: #3b5998;
+    }
+    .social-icons a.twitter:hover {
+      background-color: #00aced;
+    }
+    .social-icons a.linkedin:hover {
+      background-color: #007bb6;
+    }
+    .social-icons a.dribbble:hover {
+      background-color: #ea4c89;
+    }
+    @media (max-width: 767px) {
+      .social-icons li.title {
+        display: block;
+        margin-right: 0;
+        font-weight: 600;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+  <body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top w3-hide-small">
+      <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+        <div style="font-size: 40px">
+          <a href="#" class="w3-bar-item w3-button" style="">HOME</a>
+          <a href="#menu" class="w3-bar-item w3-button">MENU</a>
+          <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header with image -->
+    <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+      <div class="w3-display-bottomleft w3-padding">
+        <span class="w3-tag w3-xlarge">Open from 10am to 6pm weekdays</span>
+      </div>
+      <div class="w3-display-middle w3-center">
+        <img style="width: 45%" src="images/logo.png" /> <br />
+        <span class="w3-text-white w3-hide-small" style="font-size: 150px">Pasta Plate</span>
+        <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size: 60px"
+          ><b>PASTAS<br />AND BREADS</b></span
+        >
+        <p><a href="#menu" class="w3-button w3-xxlarge w3-black">go to the menu</a></p>
+      </div>
+    </header>
+
+    <!-- Menu Container -->
+    <form action="order.html" method="GET">
+      <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+        <div class="w3-content">
+          <h1 class="w3-center w3-jumbo" style="margin-bottom: 64px">THE MENU</h1>
+          <div class="w3-row w3-center w3-border w3-border-dark-grey">
+            <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');" id="myLink">
+              <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pastas</div>
+            </a>
+            <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
+              <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Justine Breads</div>
+            </a>
+            <a href="javascript:void(0)" onclick="openMenu(event, 'Starter');">
+              <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Drinks</div>
+            </a>
+          </div>
+
+          <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+            <img src="images/linguine.jfif" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Linguine al Prosciutto e Tartufo</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Linguine al Prosciutto e Tartufo"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱395.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; A flavorful combination of prosciutto, truffle oil, porcini &nbsp; &nbsp; &nbsp;
+              &nbsp;&nbsp;and shitake mushrooms.</p
+            >
+            <hr />
+
+            <img src="images/carbonara.jpg" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Spaghetti alla Carbonara</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Spaghetti alla Carbonara"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱340.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; Spaghetti pasta tossed in creamy white sauce with Parmesan &nbsp; &nbsp; &nbsp;
+              &nbsp;&nbsp;cheese and bacon bits</p
+            >
+            <hr />
+
+            <img src="images/seafood_diablo.jfif" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Seafood Diablo</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Seafood Diablo"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱430.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; Clams and scallops in tomato and cream sauce on spaghetti &nbsp; &nbsp; &nbsp;&nbsp;sautéed
+              with chili flakes and chili oil for an added spicy bite.</p
+            >
+            <hr />
+
+            <img src="images/spaghetti.jfif" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Spaghetti Aglio Olio</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Spaghetti Aglio Olio"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱230.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; Mildly spicy pasta dish in rich garlic and olive oil sauce with &nbsp; &nbsp;
+              &nbsp;&nbsp;anchovies
+            </p>
+            <hr />
+
+            <img src="images/tesori.jfif" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Spaghetti ai Tesori del Mare</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Spaghetti ai Tesori del Mare"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱455.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; A mildly spicy feast of spaghetti tossed in fresh tomatoes, &nbsp; &nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;scallops, clams, mussels and chili oil</p
+            >
+            <hr />
+
+            <img src="images/prosciutto.jfif" style="width: 30%; float: left; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Creamy Pesto & Prosciutto</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Creamy Pesto & Prosciutto"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱410.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px">
+              &nbsp; &nbsp; Penne pasta with creamy pesto sauce and fried prosciutto</p
+            >
+          </div>
+
+          <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
+            <img src="images/focaccia.jpeg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 55px">Herb Onion Focaccia</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Herb Onion Focaccia"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱143.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 260gms</p>
+            <hr />
+
+            <img src="images/croissant.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 55px">French Butter Croissant</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="French Butter Croissant"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱140.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 240gms</p>
+            <hr />
+
+            <img src="images/sourdough.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 55px">Sourdough Bread</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Sourdough Bread"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱140.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 260gms</p>
+            <hr />
+
+            <img src="images/ciabatta.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 55px">Ciabatta Bread</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Ciabatta Bread"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱140.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 260gms</p>
+          </div>
+
+          <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
+            <img src="images/pepsi.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Pepsi</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Pepsi"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱53.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 330ml can</p>
+            <hr />
+
+            <img src="images/rootbeer.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Mug's Rootbeer</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Mug's Rootbeer"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱56.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 330ml can</p>
+            <hr />
+
+            <img src="images/mountain-dew.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Mountain Dew</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Mountain Dew"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱53.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 330ml can</p>
+            <hr />
+
+            <img src="images/pepsimax.jpg" style="width: 20%; float: left; height: 10%; border-radius: 10%" />
+            <b style="margin-left: 15px; font-size: 45px">Pepsi Max</b>
+            <input
+              style="margin-left: 8px; width: 50px; float: right"
+              type="number"
+              placeholder="0"
+              min="0"
+              max="99"
+              name="Pepsi Max"
+            />
+            <span style="float: right; margin-left: 15px"> QTY: </span>
+            <span class="w3-right w3-tag w3-dark-grey w3-round">₱58.00</span>
+            <p class="w3-text-grey" style="margin-top: 0px"> &nbsp; &nbsp; 330ml can</p>
+            <hr /> </div
+          ><br />
+        </div>
+      </div>
+      <!-- Contact -->
+      <div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" id="contact">
+        <div class="w3-content">
+          <h1 class="w3-center w3-jumbo" style="margin-bottom: 64px">Customer Details</h1>
+          <p class="w3-xxlarge"
+            ><strong>Please enter your contact details!</strong> all orders are to be paid on delivery!</p
+          >
+          <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name" /></p>
+          <p
+            ><input
+              class="w3-input w3-padding-16 w3-border"
+              type="tel"
+              pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
+              type="phone"
+              placeholder="Contact Details"
+              required
+              name="Contact"
+          /></p>
+          <p
+            ><input
+              class="w3-input w3-padding-16 w3-border"
+              type="text"
+              placeholder="Message / Special requirements"
+              required
+              name="Short Message"
+          /></p>
+          <p><button class="w3-button w3-light-grey w3-block" type="submit">Finalize!</button></p>
+        </div>
+      </div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+      <p
+        >Contact us
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="w3-hover-text-green">here!</a></p
+      >
+      <ul class="social-icons">
+        <li
+          ><a class="facebook" href="#"><i class="fab fa-facebook"></i></a
+        ></li>
+        <li
+          ><a class="twitter" href="#"><i class="fas fa-twitter"></i></a
+        ></li>
+        <li
+          ><a class="dribbble" href="#"><i class="fas fa-dribbble"></i></a
+        ></li>
+        <li
+          ><a class="linkedin" href="#"><i class="fas fa-linkedin"></i></a
+        ></li>
+      </ul>
+    </footer>
+
+    <script>
+      // Tabbed Menu
+      function openMenu(evt, menuName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("menu");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(menuName).style.display = "block";
+        evt.currentTarget.firstElementChild.className += " w3-red";
+      }
+      document.getElementById("myLink").click();
+    </script>
+  </body>
+</html>
